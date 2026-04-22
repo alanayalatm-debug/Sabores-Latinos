@@ -11,7 +11,7 @@ const RecipeDetail = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/recipes/${id}`);
+        const response = await fetch(`https://sabores-latinos.onrender.com/api/recipes/${id}`);
         if (!response.ok) {
           throw new Error('Receta no encontrada');
         }

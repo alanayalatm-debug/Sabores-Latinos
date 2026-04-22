@@ -10,7 +10,7 @@ const Home = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/recipes');
+        const response = await fetch('https://sabores-latinos.onrender.com/api/recipes');
         if (!response.ok) {
           throw new Error('Error al obtener las recetas');
         }
