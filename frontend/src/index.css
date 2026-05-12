@@ -302,3 +302,119 @@ body {
   line-height: 1.7;
   padding-top: 0.5rem;
 }
+
+/* Footer Styles */
+.app-footer {
+  background-color: var(--card-bg);
+  padding: 3rem 2rem 1rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.footer-section p {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-section ul li a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Static Pages Styles (Privacy, About, Contact) */
+.static-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.static-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  text-align: center;
+}
+
+.static-content {
+  background-color: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.static-content h2 {
+  color: var(--text-main);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.static-content p, .static-content ul {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.static-content ul {
+  padding-left: 2rem;
+}
+
+.static-content ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* SEO Intro Text */
+.seo-intro-text {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.seo-intro-text h2 {
+  color: var(--text-main);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.seo-intro-text p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}

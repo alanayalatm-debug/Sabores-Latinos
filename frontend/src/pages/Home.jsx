@@ -43,6 +43,12 @@ const Home = () => {
         </p>
       </header>
       
+      <section className="seo-intro-text">
+        <h2>La Auténtica Gastronomía Latinoamericana en tu Mesa</h2>
+        <p>América Latina es un continente lleno de colores, culturas y, sobre todo, sabores inigualables. En <strong>Sabores Latinos</strong>, nos dedicamos a recopilar las mejores recetas tradicionales de la región. Desde el picante vibrante de México, pasando por las ricas arepas de Colombia y Venezuela, hasta llegar a los sabrosos cortes de carne del asado argentino y uruguayo.</p>
+        <p>Nuestro objetivo es que puedas preparar estos deliciosos platos típicos en casa, con ingredientes accesibles e instrucciones paso a paso. Explora nuestra colección, aprende sobre la historia detrás de cada platillo y comienza tu viaje culinario hoy mismo. Ya seas un chef experimentado o un principiante entusiasta, aquí encontrarás inspiración para tu próxima comida en familia.</p>
+      </section>
+      
       <main className="recipe-container">
         {loading ? (
           <div className="loading-state" aria-live="polite">Cargando delicias de toda Latinoamérica...</div>
