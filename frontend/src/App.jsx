@@ -7,6 +7,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 import './index.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <HelmetProvider>
       <Router>
         <div className="app-container" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <Navbar />
           <div style={{ flex: 1 }}>
             <Routes>
               <Route path="/" element={<Home />} />

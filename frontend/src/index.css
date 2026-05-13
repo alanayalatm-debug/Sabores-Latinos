@@ -24,6 +24,51 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Navbar Styles */
+.navbar {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: var(--text-main);
+  transition: var(--transition);
+}
+
+.navbar-logo:hover {
+  transform: scale(1.02);
+}
+
+.navbar-icon {
+  color: var(--primary);
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #FF6B6B, #FCA5A5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
 /* Header */
 .app-header {
   text-align: center;
