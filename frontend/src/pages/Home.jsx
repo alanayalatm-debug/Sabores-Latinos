@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import RecipeList from '../components/RecipeList';
+import EbookPromo from '../components/EbookPromo';
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -8,22 +9,25 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchRecipes = async () => {
-      try {
-        const response = await fetch('https://sabores-latinos.onrender.com/api/recipes');
-        if (!response.ok) {
-          throw new Error('Error al obtener las recetas');
-        }
-        const data = await response.json();
-        setRecipes(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRecipes();
+    // Simulamos un leve retardo para mostrar la animación de carga (opcional)
+    // o simplemente seteamos las recetas directamente para carga instantánea.
+    import('../data/recipes').then((module) => {
+      const basicInfo = module.recipes.map(r => ({
+        id: r.id,
+        title: r.title,
+        country: r.country,
+        description: r.description,
+        imageUrl: r.imageUrl,
+        prepTime: r.prepTime,
+        cookTime: r.cookTime,
+        difficulty: r.difficulty
+      }));
+      setRecipes(basicInfo);
+      setLoading(false);
+    }).catch(err => {
+      setError(err.message);
+      setLoading(false);
+    });
   }, []);
 
   return (
@@ -49,6 +53,8 @@ const Home = () => {
         <p>Nuestro objetivo es que puedas preparar estos deliciosos platos típicos en casa, con ingredientes accesibles e instrucciones paso a paso. Explora nuestra colección, aprende sobre la historia detrás de cada platillo y comienza tu viaje culinario hoy mismo. Ya seas un chef experimentado o un principiante entusiasta, aquí encontrarás inspiración para tu próxima comida en familia.</p>
       </section>
       
+      <EbookPromo />
+
       <main className="recipe-container">
         {loading ? (
           <div className="loading-state" aria-live="polite">Cargando delicias de toda Latinoamérica...</div>

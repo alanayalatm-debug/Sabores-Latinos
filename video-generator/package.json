@@ -1,0 +1,17 @@
+{
+  "name": "sabores-latinos-videos",
+  "version": "1.0.0",
+  "description": "Generador de videos faceless para Sabores Latinos",
+  "scripts": {
+    "start": "npx remotion studio src/index.js",
+    "build": "npx remotion render src/index.js RecipeVideo out/video.mp4"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "remotion": "^4.0.462"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.462"
+  }
+}

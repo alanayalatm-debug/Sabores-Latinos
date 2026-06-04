@@ -9,22 +9,18 @@ const RecipeDetail = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchRecipe = async () => {
-      try {
-        const response = await fetch(`https://sabores-latinos.onrender.com/api/recipes/${id}`);
-        if (!response.ok) {
-          throw new Error('Receta no encontrada');
-        }
-        const data = await response.json();
-        setRecipe(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+    import('../data/recipes').then((module) => {
+      const foundRecipe = module.recipes.find(r => r.id === parseInt(id));
+      if (foundRecipe) {
+        setRecipe(foundRecipe);
+      } else {
+        setError('Receta no encontrada');
       }
-    };
-
-    fetchRecipe();
+      setLoading(false);
+    }).catch(err => {
+      setError(err.message);
+      setLoading(false);
+    });
   }, [id]);
 
   if (loading) return <div className="loading-state" aria-live="polite">Preparando los fogones...</div>;
