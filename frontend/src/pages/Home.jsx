@@ -53,6 +53,52 @@ const Home = () => {
       
       <EbookPromo />
 
+      <section className="gastronomy-pillars-section">
+        <div className="pillars-container">
+          <h2 className="pillars-title">Pilares de la Cocina Latinoamericana</h2>
+          <p className="pillars-subtitle">
+            Los elementos ancestrales y fusiones culturales que definen la identidad de nuestros sabores.
+          </p>
+          <div className="pillars-grid">
+            <div className="pillar-card">
+              <div className="pillar-icon">🌽</div>
+              <h3 className="pillar-card-title">El Maíz: Regalo de los Dioses</h3>
+              <p className="pillar-card-text">
+                Base sagrada de la alimentación prehispánica. Hoy en día, es el alma de las tortillas en México, las arepas en Colombia y Venezuela, y las pupusas en El Salvador. Un ingrediente noble y versátil que une a todo el continente.
+              </p>
+            </div>
+            <div className="pillar-card">
+              <div className="pillar-icon">🌶️</div>
+              <h3 className="pillar-card-title">El Ají y el Chile: Alma y Fuego</h3>
+              <p className="pillar-card-text">
+                Desde los picantes chiles guajillo y habanero de México, hasta el aromático ají amarillo peruano y el locote paraguayo. La intensidad y diversidad de nuestros ajíes aportan color, identidad y calor a cada guiso.
+              </p>
+            </div>
+            <div className="pillar-card">
+              <div className="pillar-icon">🍌</div>
+              <h3 className="pillar-card-title">El Plátano: El Sabor del Trópico</h3>
+              <p className="pillar-card-text">
+                Verde o maduro, el plátano es indispensable en la mesa caribeña y centroamericana. Se transforma mágicamente en el mofongo puertorriqueño, el mangú dominicano, el vigorón nicaragüense y las dulces tajadas venezolanas.
+              </p>
+            </div>
+            <div className="pillar-card">
+              <div className="pillar-icon">🍠</div>
+              <h3 className="pillar-card-title">La Yuca: Raíz de Resistencia</h3>
+              <p className="pillar-card-text">
+                También conocida como mandioca, este tubérculo de origen amazónico ha alimentado a los pueblos nativos durante milenios. Su textura crujiente y suave acompaña sopas como el encebollado ecuatoriano o el sancocho panameño.
+              </p>
+            </div>
+            <div className="pillar-card full-width-pillar">
+              <div className="pillar-icon">🌎</div>
+              <h3 className="pillar-card-title">El Encuentro de Mundos y Culturas</h3>
+              <p className="pillar-card-text">
+                La cocina latinoamericana es una de las fusiones más ricas del planeta. En ella convergen técnicas agrícolas milenarias de los pueblos originarios (mayas, aztecas e incas), la herencia culinaria traída de Europa (española y portuguesa), la influencia y sazón de la diáspora africana en las costas, y la sutil adaptación de las corrientes migratorias asiáticas de los siglos XIX y XX. Esta fusión de cuatro continentes crea un mosaico de texturas, aromas y especias único en el mundo gastronómico.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <main className="recipe-container">
         {loading ? (
           <div className="loading-state" aria-live="polite">Cargando delicias de toda Latinoamérica...</div>
