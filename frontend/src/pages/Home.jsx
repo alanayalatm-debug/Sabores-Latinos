@@ -9,8 +9,6 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulamos un leve retardo para mostrar la animación de carga (opcional)
-    // o simplemente seteamos las recetas directamente para carga instantánea.
     import('../data/recipes').then((module) => {
       const basicInfo = module.recipes.map(r => ({
         id: r.id,

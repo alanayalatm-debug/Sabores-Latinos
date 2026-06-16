@@ -8,8 +8,8 @@ const RecipeList = ({ recipes }) => {
 
   return (
     <div className="recipe-grid">
-      {recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
+      {recipes.map((recipe, index) => (
+        <RecipeCard key={recipe.id} recipe={recipe} index={index} />
       ))}
     </div>
   );

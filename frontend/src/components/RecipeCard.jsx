@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipe, index = 0 }) => {
+  // Las primeras 6 tarjetas están above the fold (grid 3 col × 2 filas)
+  // Se cargan eagerly con prioridad alta para evitar el retraso del cold start
+  const isAboveFold = index < 6;
   return (
     <Link to={`/recipe/${recipe.id}`} className="recipe-card-link" style={{ textDecoration: 'none' }}>
       <div className="recipe-card">
@@ -10,7 +13,8 @@ const RecipeCard = ({ recipe }) => {
             src={recipe.imageUrl} 
             alt={recipe.title} 
             className="recipe-image"
-            loading="lazy"
+            loading={isAboveFold ? 'eager' : 'lazy'}
+            fetchpriority={isAboveFold ? 'high' : 'low'}
           />
           <span className="country-badge">{recipe.country}</span>
         </div>

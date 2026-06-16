@@ -4,7 +4,7 @@ export const recipes = [
     title: 'Tacos al Pastor',
     country: 'México',
     description: 'Deliciosos tacos de carne de cerdo adobada, servidos con piña, cebolla y cilantro sobre tortillas de maíz.',
-    imageUrl: 'https://sabores-latinos.onrender.com/public/images/tacos.png',
+    imageUrl: '/images/tacos.png',
     prepTime: '20 min',
     cookTime: '25 min',
     difficulty: 'Media',
@@ -23,14 +23,26 @@ export const recipes = [
       'Cocinar la carne en una sartén caliente o trompo hasta que esté dorada.',
       'Picar la carne cocinada.',
       'Servir sobre tortillas de maíz calientes, adornando con piña, cebolla y cilantro fresco.'
-    ]
+    ],
+    history: 'Los Tacos al Pastor son una joya de la gastronomía callejera mexicana. Su origen proviene de la fusión culinaria con la inmigración libanesa en la década de 1960. Los libaneses introdujeron el shawarma en México, utilizando asadores verticales. Con el tiempo, los taqueros mexicanos adaptaron la receta marinando carne de cerdo con achiote y chiles locales, y coronaron el plato con piña, cebolla y cilantro. Hoy en día, es uno de los platos más populares y representativos de México a nivel global.',
+    tips: [
+      'Marinar la carne durante al menos 12 horas en el refrigerador para que absorba todos los aromas del achiote y los chiles.',
+      'Cocinar en una sartén extremadamente caliente o plancha de hierro para lograr bordes crujientes similares al trompo original.',
+      'Servir siempre en tortillas de maíz pequeñas y calientes, acompañados de piña fresca y una buena salsa picante.'
+    ],
+    nutrition: {
+      calories: '280 kcal',
+      protein: '18 g',
+      fat: '12 g',
+      carbs: '24 g'
+    }
   },
   {
     id: 2,
     title: 'Ceviche Peruano',
     country: 'Perú',
     description: 'Pescado fresco marinado en jugo de limón, acompañado de ají, cebolla morada, camote y maíz tostado.',
-    imageUrl: 'https://sabores-latinos.onrender.com/public/images/ceviche.png',
+    imageUrl: '/images/ceviche.png',
     prepTime: '15 min',
     cookTime: '5 min (marinado)',
     difficulty: 'Fácil',
@@ -50,14 +62,26 @@ export const recipes = [
       'Cortar la cebolla en pluma, lavarla ligeramente e incorporarla al pescado.',
       'Dejar reposar solo unos minutos (leche de tigre).',
       'Servir inmediatamente acompañado de camote y cancha tostada.'
-    ]
+    ],
+    history: 'El ceviche peruano es considerado Patrimonio Cultural de la Nación. Su origen se remonta a la cultura Moche hace más de dos mil años, quienes preparaban pescado fresco con el jugo fermentado de una fruta local llamada tumbo. Con la llegada de los españoles, se introdujeron el limón y la cebolla. El plato evolucionó hasta convertirse en una receta simple pero de sabor explosivo, donde la frescura del pescado y la acidez del limón son los protagonistas indiscutibles.',
+    tips: [
+      'Utilizar pescado blanco de roca muy fresco y de consistencia firme, como la corvina, el lenguado o el mero.',
+      'Exprimir los limones suavemente y a mano; si se exprimen demasiado, el jugo liberará los aceites amargos de la cáscara.',
+      'Servir de inmediato tras mezclar los ingredientes para evitar que el limón sobrecocine el pescado y pierda su textura ideal.'
+    ],
+    nutrition: {
+      calories: '190 kcal',
+      protein: '22 g',
+      fat: '3 g',
+      carbs: '18 g'
+    }
   },
   {
     id: 3,
     title: 'Arepas Rellenas',
     country: 'Colombia',
     description: 'Masa de maíz dorada a la plancha, crujiente por fuera y suave por dentro, rellena de queso y carne mechada.',
-    imageUrl: 'https://sabores-latinos.onrender.com/public/images/arepas.png',
+    imageUrl: '/images/arepas.png',
     prepTime: '10 min',
     cookTime: '20 min',
     difficulty: 'Fácil',
@@ -76,14 +100,26 @@ export const recipes = [
       'Asar las arepas en una plancha o sartén con mantequilla a fuego medio hasta que estén doradas por ambos lados.',
       'Abrirlas con cuidado por la mitad y rellenarlas con queso o la carne de preferencia.',
       'Devolver a la plancha unos minutos para derretir el queso y servir.'
-    ]
+    ],
+    history: 'La arepa es un alimento ancestral de origen precolombino en los territorios de las actuales Colombia y Venezuela. Las tribus indígenas molían el maíz entre piedras y cocinaban la masa en planchas de barro llamadas budares. En Colombia, la arepa acompaña el desayuno y las comidas diarias. Su versatilidad permite rellenarla con diversos ingredientes locales como queso fresco, mantequilla, huevos y carnes desmechadas, convirtiéndola en un símbolo de identidad y tradición familiar.',
+    tips: [
+      'Al mezclar la harina de maíz con agua tibia, amasar muy bien durante 5 minutos para eliminar grumos y lograr una textura suave.',
+      'Tapar la masa con un paño húmedo mientras formas las arepas para evitar que se reseque y se agriete al asar.',
+      'Asar a fuego medio-bajo en una sartén antiadherente con un poco de mantequilla para conseguir una corteza dorada y crujiente.'
+    ],
+    nutrition: {
+      calories: '320 kcal',
+      protein: '14 g',
+      fat: '10 g',
+      carbs: '45 g'
+    }
   },
   {
     id: 4,
     title: 'Asado Tradicional',
     country: 'Argentina',
     description: 'La máxima expresión de la carne a la parrilla, un ritual culinario inigualable.',
-    imageUrl: 'https://sabores-latinos.onrender.com/public/images/asado.png',
+    imageUrl: '/images/asado.png',
     prepTime: '30 min',
     cookTime: '90 min',
     difficulty: 'Media',
@@ -101,14 +137,26 @@ export const recipes = [
       'Cocinar a fuego lento en la parrilla, primero del lado del hueso.',
       'Voltear cuando los jugos comiencen a salir y dorar.',
       'Cocinar chorizos y morcillas alrededor. Servir con chimichurri.'
-    ]
+    ],
+    history: 'El asado argentino es mucho más que una comida; es un ritual social que reúne a familias y amigos. Sus orígenes provienen de los gauchos, los habitantes de las pampas que cocinaban la carne de res al aire libre utilizando leña. La técnica del asado a la parrilla se perfeccionó con los años. La sazón principal es la sal gruesa, permitiendo que destaque la calidad natural de la carne, acompañada de la clásica salsa chimichurri.',
+    tips: [
+      'Usar brasas de madera dura o carbón vegetal de buena calidad y esperar a que estén cubiertas de ceniza gris antes de colocar la carne.',
+      'No pinchar la carne con tenedores durante la cocción para evitar que pierda sus jugos naturales; usar siempre pinzas.',
+      'Cocinar con paciencia, colocando los cortes más gruesos y con hueso primero del lado del hueso para una cocción homogénea.'
+    ],
+    nutrition: {
+      calories: '480 kcal',
+      protein: '35 g',
+      fat: '36 g',
+      carbs: '2 g'
+    }
   },
   {
     id: 5,
     title: 'Empanadas de Pino',
     country: 'Chile',
     description: 'Empanadas horneadas rellenas de carne, cebolla, huevo duro, aceitunas y pasas.',
-    imageUrl: 'https://sabores-latinos.onrender.com/public/images/empanadas_chile.png',
+    imageUrl: '/images/empanadas_chile.png',
     prepTime: '40 min',
     cookTime: '30 min',
     difficulty: 'Media',
@@ -125,7 +173,19 @@ export const recipes = [
       'Rellenar los discos de masa agregando carne, 1 aceituna, un par de pasas y un cuarto de huevo duro.',
       'Cerrar la empanada y pintar con huevo batido.',
       'Hornear a 200°C por 30 minutos hasta que estén doradas.'
-    ]
+    ],
+    history: 'Las empanadas de pino son la preparación típica por excelencia durante las fiestas patrias de Chile. La palabra "pino" proviene del mapudungún "pinu", que hace referencia a trozos de carne guisada. Aunque la empanada tiene raíces españolas y árabes, la versión chilena se caracteriza por su masa horneada crujiente rellena de un guiso sazonado de carne picada de res, abundante cebolla, huevo duro, aceitunas negras y pasas.',
+    tips: [
+      'Preparar el guiso de carne (pino) el día anterior y refrigerarlo; esto asentará los sabores y hará más fácil el relleno.',
+      'Picar la cebolla finamente y cocinarla a fuego lento por bastante tiempo para que resulte tierna y fácil de digerir.',
+      'Pintar las empanadas con una mezcla de yema de huevo y leche antes de hornear para lograr un color dorado brillante perfecto.'
+    ],
+    nutrition: {
+      calories: '380 kcal',
+      protein: '15 g',
+      fat: '16 g',
+      carbs: '42 g'
+    }
   },
   {
     id: 6,
@@ -150,7 +210,19 @@ export const recipes = [
       'Sofreír ajo, cebolla y tocino, agregar los frijoles y las carnes.',
       'Cocinar a fuego lento durante un par de horas hasta que espese.',
       'Servir caliente con arroz blanco, farofa y gajos de naranja.'
-    ]
+    ],
+    history: 'La feijoada es considerada el plato nacional de Brasil. Aunque existe la creencia popular de que fue creada por los esclavos que mezclaban frijoles negros con los restos de carne que no comían los amos, los historiadores señalan que es una adaptación tropical del cocido portugués. El estofado combina frijoles negros con una gran variedad de carnes saladas y ahumadas de cerdo, y se sirve tradicionalmente los sábados junto a arroz, farofa y naranjas.',
+    tips: [
+      'Remojar los frijoles negros por lo menos 12 horas en el refrigerador para reducir el tiempo de cocción y facilitar la digestión.',
+      'Desalar muy bien las carnes saladas hirviéndolas previamente por separado un par de veces para controlar el exceso de sal en el guiso.',
+      'Agregar rodajas de naranja entera al estofado durante los últimos minutos de cocción para equilibrar la grasa de las carnes.'
+    ],
+    nutrition: {
+      calories: '450 kcal',
+      protein: '28 g',
+      fat: '22 g',
+      carbs: '38 g'
+    }
   },
   {
     id: 7,
@@ -176,7 +248,19 @@ export const recipes = [
       'Cocinar el arroz blanco tradicional.',
       'Freír tajadas del plátano maduro.',
       'Servir todos los componentes organizados en el plato.'
-    ]
+    ],
+    history: 'El pabellón criollo representa la diversidad cultural y racial de Venezuela. Sus cuatro ingredientes principales simbolizan la unión de las culturas europea (arroz blanco), africana (caraotas o frijoles negros), indígena (carne mechada) y los frutos de la tierra americana (plátano maduro frito o tajadas). Se consolidó como plato nacional en el siglo XIX, sirviendo de sustento a las familias del campo por su gran valor energético.',
+    tips: [
+      'Para que las tajadas de plátano queden perfectas, utiliza plátanos bien maduros (con la cáscara casi negra) para obtener su dulzor característico.',
+      'Hervir la carne con cebolla, ajo y pimiento verde; este caldo te servirá luego para guisar la carne desmechada con sofrito.',
+      'Sazonar los frijoles negros con comino y un toque de azúcar al final de la cocción para darle el auténtico toque caraqueño.'
+    ],
+    nutrition: {
+      calories: '520 kcal',
+      protein: '26 g',
+      fat: '18 g',
+      carbs: '64 g'
+    }
   },
   {
     id: 8,
@@ -197,11 +281,23 @@ export const recipes = [
     ],
     steps: [
       'Hacer un caldo cocinando el pescado con agua, tomate, cebolla, cilantro y sal.',
-      'Retirar el pescado cocido y en el mismo caldo cocinar la yuca cortada en trozos grandes.',
+      'Retirar el pescado cocido y en el mismo caldo cocinar la yuca corta en trozos grandes.',
       'Desmenuzar el pescado en lascas medianas.',
       'Encurtir la cebolla roja picada finamente con limón y sal.',
       'Servir en un plato hondo: la yuca y el caldo caliente, coronar con pescado, cebolla encurtida y cilantro picado.'
-    ]
+    ],
+    history: 'El encebollado es el plato insignia de la costa ecuatoriana, conocido por su sabor reparador y por ser el remedio popular para la resaca. Su origen está en los antiguos pescadores indígenas que cocinaban pescado fresco con yuca en vasijas de barro. Con la llegada de los colonizadores, se incorporó la cebolla encurtida y el limón. Es una sopa sabrosa de atún fresco y yuca, coronada con abundante cebolla encurtida y cilantro.',
+    tips: [
+      'Cocinar la yuca hasta que esté muy blanda para que suelte almidón y ayude a espesar sutilmente el caldo de pescado.',
+      'Servir acompañado de chifles (plátano verde frito en rodajas finas), canguil (palomitas de maíz) o tostado de maíz.',
+      'Encurtir la cebolla roja con limón y sal de antemano para que pierda el picor fuerte y aporte una acidez agradable al plato.'
+    ],
+    nutrition: {
+      calories: '310 kcal',
+      protein: '25 g',
+      fat: '5 g',
+      carbs: '42 g'
+    }
   },
   {
     id: 9,
@@ -226,7 +322,19 @@ export const recipes = [
       'Preparar la masa añadiendo un poco de manteca coloreada con achiote.',
       'Rellenar la masa y hacer un repulgue muy firme en la parte superior.',
       'Hornear a temperatura muy alta (300°C) durante 15 minutos.'
-    ]
+    ],
+    history: 'Las salteñas son las empanadas más representativas de Bolivia, consumidas tradicionalmente a media mañana. Su creación se atribuye a Juana Manuela Gorriti, una escritora argentina oriunda de Salta (de ahí el nombre "salteña") que se exilió en Potosí durante el siglo XIX. Gorriti popularizó estas empanadas dulces, picantes y sumamente jugosas, rellenas con un guiso con gelatina que se derrite al hornearse a altas temperaturas.',
+    tips: [
+      'Preparar el guiso (jigote) un día antes de rellenar la masa para que la gelatina solidifique adecuadamente en el refrigerador.',
+      'Al cerrar la empanada, hacer el repulgue en la parte superior y presionar muy bien para evitar que el jugo se escape en el horno.',
+      'Hornear a la temperatura máxima permitida por tu horno (280°C o más) para cocinar la masa rápidamente sin derretir el relleno antes de tiempo.'
+    ],
+    nutrition: {
+      calories: '340 kcal',
+      protein: '12 g',
+      fat: '14 g',
+      carbs: '40 g'
+    }
   },
   {
     id: 10,
@@ -252,7 +360,19 @@ export const recipes = [
       'Mientras hierve el caldo, preparar la masa para los vori vori mezclando en un bol la harina de maíz, queso desmenuzado y un poco del caldo caliente.',
       'Amasar hasta lograr consistencia firme y formar bolitas pequeñas (vori vori) con las manos.',
       'Echar las bolitas al caldo hirviendo y cocinar unos minutos hasta que floten en la superficie. Servir bien caliente.'
-    ]
+    ],
+    history: 'El vori vori es un plato tradicional de Paraguay muy reconfortante, declarado de Interés Turístico Nacional. Su nombre proviene de la duplicación de la palabra "bolita" en guaraní ("borí"). Consiste en un caldo de pollo espeso y nutritivo en el que se cocinan pequeñas esferas hechas de harina de maíz y queso paraguayo. Es un ejemplo perfecto de la fusión de la cocina indígena guaraní con las tradiciones traídas por los jesuitas.',
+    tips: [
+      'Utilizar harina de maíz de grano fino y mezclarla con un queso de consistencia semidura y sabor suave para formar las bolitas.',
+      'Humedecer la masa de las bolitas con el caldo caliente del guiso para que absorban todo el sabor de las verduras y el pollo.',
+      'No hacer las bolitas demasiado grandes para garantizar que se cocinen de manera uniforme hasta el centro sin desarmarse.'
+    ],
+    nutrition: {
+      calories: '290 kcal',
+      protein: '16 g',
+      fat: '9 g',
+      carbs: '36 g'
+    }
   },
   {
     id: 11,
@@ -276,7 +396,19 @@ export const recipes = [
       'En la misma plancha, freír la panceta hasta que esté crujiente y hacer los huevos fritos.',
       'Calentar ligeramente el pan cortado a la mitad y untarlo con mayonesa.',
       'Armar el sándwich apilando lechuga, tomate, la carne, jamón, queso derretido, panceta y huevo.'
-    ]
+    ],
+    history: 'El chivito es el sándwich más popular y representativo de Uruguay, inventado en la década de 1940 en Punta del Este. La leyenda cuenta que una turista del norte argentino pidió carne de chivo (cabrito), pero al no disponer de ella, el dueño del local preparó un pan tostado con manteca, un filete de lomo de res bien jugoso, jamón y queso. El sándwich fue un éxito inmediato y se convirtió en un clásico de la gastronomía rioplatense.',
+    tips: [
+      'Usar un corte de lomo de res de excelente calidad cortado en bifes delgados para que se cocine rápidamente y quede tierno al morder.',
+      'Tostar ligeramente la parte interna del pan con un poco de mantequilla en la misma plancha donde cocinaste la carne para absorber jugos.',
+      'Montar el sándwich de forma ordenada para que las capas de panceta, queso fundido, huevo frito, lechuga y tomate se mantengan firmes.'
+    ],
+    nutrition: {
+      calories: '620 kcal',
+      protein: '42 g',
+      fat: '34 g',
+      carbs: '38 g'
+    }
   },
   {
     id: 12,
@@ -301,7 +433,19 @@ export const recipes = [
       'En una sartén grande, hacer un sofrito con la cebolla, el ajo y los pimientos cortados en juliana.',
       'Agregar la carne desmechada, el puré de tomate, el vino y media taza del caldo de cocción.',
       'Cocinar a fuego lento por 20 minutos hasta que los sabores se integren.'
-    ]
+    ],
+    history: 'La ropa vieja es uno de los platos más emblemáticos de la gastronomía cubana. De origen español (específicamente de las islas Canarias), debe su nombre a la apariencia que tiene la carne desmechada tras su larga cocción con pimientos, cebollas y salsa de tomate, que recuerda a montones de ropa usada. En Cuba se adaptó con especias caribeñas y se sirve tradicionalmente con arroz blanco, frijoles negros y plátanos maduros fritos.',
+    tips: [
+      'Desmechar la carne a mano en hebras finas y largas para conservar la textura clásica de la Ropa Vieja cubana.',
+      'Agregar un chorrito de vino blanco o vino seco a la mitad de la cocción de la salsa para resaltar los sabores especiados.',
+      'Cocinar a fuego lento durante el paso final para que la carne absorba bien la salsa y no quede seca ni líquida.'
+    ],
+    nutrition: {
+      calories: '380 kcal',
+      protein: '32 g',
+      fat: '14 g',
+      carbs: '28 g'
+    }
   },
   {
     id: 13,
@@ -326,7 +470,19 @@ export const recipes = [
       'Cortar la cebolla en aros y sofreírla en aceite con un chorrito de vinagre.',
       'Freír el salami, el queso (hasta que dore) y los huevos en sartenes aparte.',
       'Servir el puré (mangú) coronado con la cebolla y acompañado de "los tres golpes".'
-    ]
+    ],
+    history: 'El mangú es el desayuno dominicano por excelencia. Sus raíces provienen de África Occidental, introducido por los esclavos durante la época colonial, y está relacionado con platos como el fufu. El término popular "los tres golpes" hace referencia a los tres acompañamientos tradicionales: salami frito, queso frito y huevos. Es un plato lleno de energía, sabor y tradición familiar que identifica a los dominicanos en todo el mundo.',
+    tips: [
+      'Usar agua bien fría o cubitos de hielo al machacar los plátanos verdes; esto ayuda a mantener el puré con una textura suave y sedosa.',
+      'Conseguir queso de freír de buena calidad que dore por fuera sin derretirse por completo al contacto con la sartén caliente.',
+      'Sofreír los aros de cebolla roja en aceite con vinagre para lograr ese toque crujiente y ácido que equilibra el puré.'
+    ],
+    nutrition: {
+      calories: '540 kcal',
+      protein: '22 g',
+      fat: '28 g',
+      carbs: '52 g'
+    }
   },
   {
     id: 14,
@@ -351,7 +507,19 @@ export const recipes = [
       'Agregar las rodajas de plátano caliente y trozos de chicharrón al pilón, machacando vigorosamente.',
       'Añadir el aceite de oliva y el caldo gradualmente para humedecer la masa.',
       'Darle forma de media esfera o cúpula usando el mismo pilón y servir.'
-    ]
+    ],
+    history: 'El mofongo es la estrella de la cocina puertorriqueña y un testimonio de la influencia africana en el Caribe. Deriva directamente del fufu africano, que consiste en machacar raíces cocidas. En Puerto Rico, los plátanos verdes se cortan en rodajas, se fríen y luego se machacan en un mortero de madera (pilón) junto con ajo fresco, aceite de oliva y trozos crujientes de chicharrón de cerdo, logrando una combinación sabrosa y texturizada.',
+    tips: [
+      'Freír los plátanos a fuego medio para que se cocinen completamente por dentro antes de que doren demasiado por fuera.',
+      'Machacar los plátanos en el pilón mientras sigan bien calientes; de lo contrario, se volverán duros y difíciles de integrar con el ajo y chicharrón.',
+      'Servir el mofongo acompañado de un caldo de pollo caliente al lado para humedecer la masa al comer o rellenarlo de mariscos o carne.'
+    ],
+    nutrition: {
+      calories: '460 kcal',
+      protein: '14 g',
+      fat: '22 g',
+      carbs: '55 g'
+    }
   },
   {
     id: 15,
@@ -376,7 +544,19 @@ export const recipes = [
       'Incorporar el ñame cortado en trozos medianos y más culantro.',
       'Hervir hasta que el ñame se deshaga parcialmente, espesando naturalmente el caldo.',
       'Servir bien caliente con una porción de arroz blanco al lado.'
-    ]
+    ],
+    history: 'El sancocho panameño es un caldo espeso de gallina que se consume como plato principal y es considerado un reconstituyente natural. Su origen es español, similar al cocido, pero en Panamá se adaptó utilizando ñame (un tubérculo que se deshace y espesa la sopa) y culantro, una hierba similar al cilantro pero de sabor más intenso. Es el plato rey en las fiestas familiares, carnavales y días festivos del país.',
+    tips: [
+      'Usar gallina de patio si es posible, ya que aporta un sabor y grasa más ricos y profundos al caldo en comparación con el pollo común.',
+      'No omitir el culantro de hoja ancha, ya que es el ingrediente que le da al sancocho panameño su aroma y sabor característicos.',
+      'Dejar hervir a fuego lento para que el ñame se ablande por completo y espese el caldo de manera natural.'
+    ],
+    nutrition: {
+      calories: '340 kcal',
+      protein: '24 g',
+      fat: '10 g',
+      carbs: '38 g'
+    }
   },
   {
     id: 16,
@@ -401,7 +581,19 @@ export const recipes = [
       'Incorporar el arroz blanco y mezclar vigorosamente hasta que todo el arroz tome un color homogéneo.',
       'Añadir la Salsa Lizano y continuar mezclando a fuego medio-alto por 3 minutos.',
       'Apagar el fuego, espolvorear el cilantro picado, mezclar y servir.'
-    ]
+    ],
+    history: 'El Gallo Pinto es el plato nacional de Costa Rica y el corazón de su gastronomía diaria. Consiste en una combinación equilibrada de arroz y frijoles negros que se sofríen juntos. El plato tiene influencia africana y su nombre se debe a la apariencia moteada que toma el arroz al teñirse con el caldo de los frijoles, asemejándose a las plumas de un gallo pinto. Se sazona indispensablemente con la icónica Salsa Lizano costarricense.',
+    tips: [
+      'Utilizar arroz blanco que haya sido cocinado el día anterior y refrigerado; esto evita que el Gallo Pinto quede con una textura pastosa.',
+      'Incorporar una parte del caldo oscuro de los frijoles al sartén para que el arroz adquiera ese tono característico y un sabor concentrado.',
+      'Agregar la Salsa Lizano (o una salsa de estilo inglés dulce y especiada) para lograr el sabor original de Costa Rica.'
+    ],
+    nutrition: {
+      calories: '260 kcal',
+      protein: '8 g',
+      fat: '4 g',
+      carbs: '48 g'
+    }
   },
   {
     id: 17,
@@ -426,7 +618,19 @@ export const recipes = [
       'Cortar las hojas de plátano en cuadrados grandes y usarlas como plato o base.',
       'Colocar una cama abundante de yuca caliente sobre la hoja.',
       'Poner encima trozos grandes de chicharrón y coronar todo con una generosa porción de ensalada de repollo.'
-    ]
+    ],
+    history: 'El vigorón es una de las comidas callejeras más famosas y deliciosas de Nicaragua, nacida en la ciudad de Granada a principios del siglo XX. Creado por María Luisa Cisneros como una opción económica para los fanáticos del béisbol, su nombre proviene de un tónico reconstituyente de la época. Consiste en una cama de yuca cocida caliente servida sobre hojas de plátano, coronada con chicharrón de cerdo crujiente y una ensalada ácida de repollo y tomate.',
+    tips: [
+      'Retirar la vena fibrosa central de la yuca antes o después de hervirla para lograr una consistencia suave y fácil de comer.',
+      'Servir siempre en hojas de plátano para conservar la humedad de la yuca y aportar un sutil aroma tradicional al plato.',
+      'Dejar reposar la ensalada de repollo con el vinagre al menos 10 minutos para que el repollo suavice su textura y absorba el ácido.'
+    ],
+    nutrition: {
+      calories: '490 kcal',
+      protein: '18 g',
+      fat: '22 g',
+      carbs: '54 g'
+    }
   },
   {
     id: 18,
@@ -451,7 +655,19 @@ export const recipes = [
       'Cocinar las tortillas en un comal o plancha caliente hasta que aparezcan manchas doradas y se inflen ligeramente.',
       'Untar generosamente la tortilla caliente con los frijoles refritos.',
       'Espolvorear el queso, rociar la mantequilla rala y doblar por la mitad para servir.'
-    ]
+    ],
+    history: 'La baleada es uno de los platos más populares y representativos de la gastronomía de Honduras, originado en la ciudad de La Ceiba a mediados del siglo XX. Consiste en una tortilla de harina de trigo doblada por la mitad y rellena de frijoles rojos refritos, queso seco rallado y mantequilla rala (crema hondureña). Su nombre popular proviene del aspecto de los frijoles enteros que recuerdan a "balas", convirtiéndose en un ícono culinario nacional.',
+    tips: [
+      'Amasar bien la harina de trigo con la manteca y dejar reposar la masa al menos 20 minutos para que las tortillas estiren con facilidad a mano.',
+      'Cocinar las tortillas a fuego medio-alto en un comal caliente durante poco tiempo para evitar que se endurezcan y se vuelvan quebradizas.',
+      'Utilizar frijoles rojos típicos de Centroamérica licuados y bien refritos para lograr el sabor clásico y la consistencia untuosa de la baleada.'
+    ],
+    nutrition: {
+      calories: '330 kcal',
+      protein: '9 g',
+      fat: '11 g',
+      carbs: '48 g'
+    }
   },
   {
     id: 19,
@@ -476,7 +692,19 @@ export const recipes = [
       'Tomar una bola de masa, hacerle un hueco en el centro y colocar el queso y chicharrón.',
       'Cerrar la bola encerrando el relleno y palmearla cuidadosamente para aplanarla.',
       'Cocinar en un comal caliente de 3 a 5 minutos por lado hasta que estén doradas. Servir con salsa y curtido.'
-    ]
+    ],
+    history: 'Las pupusas son el plato nacional de El Salvador, con un día nacional celebrado en su honor. Sus orígenes son precolombinos, atribuidos a los pueblos pipiles que habitaban el territorio. Son tortillas gruesas hechas a mano con masa de maíz que se rellenan antes de cocinarse con quesillo, chicharrón molido o frijoles refritos. Se sirven tradicionalmente calientes acompañadas de "curtido" (repollo fermentado en vinagre) y salsa de tomate casera.',
+    tips: [
+      'Untar las manos con un poco de aceite de cocina para manejar la masa de maíz con facilidad y evitar que se pegue al formar las pupusas.',
+      'Cerrar completamente la masa alrededor del relleno para que el queso no se escape y se queme directamente sobre la plancha.',
+      'Preparar el curtido de repollo con un día de anticipación para que fermente ligeramente y adquiera su sabor característico.'
+    ],
+    nutrition: {
+      calories: '310 kcal',
+      protein: '14 g',
+      fat: '12 g',
+      carbs: '36 g'
+    }
   },
   {
     id: 20,
@@ -501,6 +729,18 @@ export const recipes = [
       'Licuar todos los ingredientes tostados con un poco del caldo de pollo hasta formar un recado (salsa) muy fino.',
       'Colar el recado y agregarlo a la olla con el pollo hirviendo.',
       'Añadir las papas picadas y los ejotes; cocinar a fuego medio hasta que la verdura ablande y el guiso espese.'
-    ]
+    ],
+    history: 'El pepián es uno de los platos más antiguos y tradicionales de Guatemala, declarado Patrimonio Cultural de la Nación. Su origen se remonta a la época prehispánica maya, donde se servía en ceremonias religiosas importantes. Tras la conquista, se fusionó con ingredientes españoles. Consiste en un recado o guiso espeso de pollo elaborado a partir de semillas tostadas de calabaza (pepitoria) y sésamo (ajonjolí), chiles y tomates secos.',
+    tips: [
+      'Tostar las semillas de calabaza y el sésamo a fuego medio con cuidado de no quemarlas, ya que semillas quemadas amargarán el recado.',
+      'Licuar los ingredientes asados con caldo de pollo caliente hasta obtener una consistencia extremadamente fina y colarla antes de guisar.',
+      'Cocinar las verduras (papas y ejotes) directamente en el recado con el pollo para que absorban todo el sabor del guiso.'
+    ],
+    nutrition: {
+      calories: '390 kcal',
+      protein: '28 g',
+      fat: '16 g',
+      carbs: '32 g'
+    }
   }
 ];

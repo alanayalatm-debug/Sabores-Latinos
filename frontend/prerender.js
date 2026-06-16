@@ -285,7 +285,14 @@ recipes.forEach(recipe => {
       "@type": "HowToStep",
       "text": s
     })) || [],
-    "recipeCuisine": recipe.country
+    "recipeCuisine": recipe.country,
+    "nutrition": recipe.nutrition ? {
+      "@type": "NutritionInformation",
+      "calories": recipe.nutrition.calories,
+      "proteinContent": recipe.nutrition.protein,
+      "fatContent": recipe.nutrition.fat,
+      "carbohydrateContent": recipe.nutrition.carbs
+    } : undefined
   };
 
   const recipeHead = `
@@ -314,6 +321,46 @@ recipes.forEach(recipe => {
     </li>
   `).join('\n');
 
+  const historyHtml = recipe.history ? `
+    <section class="recipe-history" aria-labelledby="history-heading">
+      <h3 id="history-heading">Historia y Origen</h3>
+      <p>${recipe.history}</p>
+    </section>
+  ` : '';
+
+  const nutritionHtml = recipe.nutrition ? `
+    <section class="recipe-nutrition" aria-labelledby="nutrition-heading">
+      <h3 id="nutrition-heading">Información Nutricional (por porción)</h3>
+      <div class="nutrition-grid">
+        <div class="nutrition-item">
+          <span class="nutrition-label">Calorías</span>
+          <span class="nutrition-value">${recipe.nutrition.calories}</span>
+        </div>
+        <div class="nutrition-item">
+          <span class="nutrition-label">Proteínas</span>
+          <span class="nutrition-value">${recipe.nutrition.protein}</span>
+        </div>
+        <div class="nutrition-item">
+          <span class="nutrition-label">Grasas</span>
+          <span class="nutrition-value">${recipe.nutrition.fat}</span>
+        </div>
+        <div class="nutrition-item">
+          <span class="nutrition-label">Carbohidratos</span>
+          <span class="nutrition-value">${recipe.nutrition.carbs}</span>
+        </div>
+      </div>
+    </section>
+  ` : '';
+
+  const tipsHtml = recipe.tips && recipe.tips.length > 0 ? `
+    <section class="recipe-tips" aria-labelledby="tips-heading" style="margin-top: 3rem;">
+      <h3 id="tips-heading">💡 Consejos del Chef</h3>
+      <ul class="tips-list">
+        ${recipe.tips.map(tip => `<li>${tip}</li>`).join('\n')}
+      </ul>
+    </section>
+  ` : '';
+
   const recipeDetailHtml = `
     <article class="recipe-detail-container" style="max-width: 800px; margin: 0 auto; padding: 2rem 1rem;">
       <nav aria-label="breadcrumb" style="margin-bottom: 1.5rem;">
@@ -332,7 +379,7 @@ recipes.forEach(recipe => {
           <h1 class="recipe-detail-title" style="font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; line-height: 1.2;">${recipe.title}</h1>
           <p class="recipe-detail-description" style="font-size: 1.15rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 2rem;">${recipe.description}</p>
           
-          <div class="recipe-meta detail-meta" style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+          <div class="recipe-meta detail-meta" style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;">
             <div class="meta-item" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.95rem;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
@@ -354,6 +401,9 @@ recipes.forEach(recipe => {
               <span>Dificultad: ${recipe.difficulty}</span>
             </div>
           </div>
+          
+          ${historyHtml}
+          ${nutritionHtml}
         </div>
       </header>
 
@@ -372,6 +422,8 @@ recipes.forEach(recipe => {
           </ol>
         </section>
       </div>
+
+      ${tipsHtml}
     </article>
   `;
 

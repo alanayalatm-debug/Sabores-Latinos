@@ -45,7 +45,14 @@ const RecipeDetail = () => {
       "@type": "HowToStep",
       "text": s
     })) || [],
-    "recipeCuisine": recipe.country
+    "recipeCuisine": recipe.country,
+    "nutrition": recipe.nutrition ? {
+      "@type": "NutritionInformation",
+      "calories": recipe.nutrition.calories,
+      "proteinContent": recipe.nutrition.protein,
+      "fatContent": recipe.nutrition.fat,
+      "carbohydrateContent": recipe.nutrition.carbs
+    } : undefined
   };
 
   return (
@@ -77,7 +84,7 @@ const RecipeDetail = () => {
           <h1 className="recipe-detail-title">{recipe.title}</h1>
           <p className="recipe-detail-description">{recipe.description}</p>
           
-          <div className="recipe-meta detail-meta" style={{ gap: '1.5rem', flexWrap: 'wrap' }}>
+          <div className="recipe-meta detail-meta" style={{ gap: '1.5rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
             <div className="meta-item">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="10"></circle>
@@ -99,6 +106,37 @@ const RecipeDetail = () => {
               <span>Dificultad: {recipe.difficulty}</span>
             </div>
           </div>
+
+          {recipe.history && (
+            <section className="recipe-history" aria-labelledby="history-heading">
+              <h3 id="history-heading">Historia y Origen</h3>
+              <p>{recipe.history}</p>
+            </section>
+          )}
+
+          {recipe.nutrition && (
+            <section className="recipe-nutrition" aria-labelledby="nutrition-heading">
+              <h3 id="nutrition-heading">Información Nutricional (por porción)</h3>
+              <div className="nutrition-grid">
+                <div className="nutrition-item">
+                  <span className="nutrition-label">Calorías</span>
+                  <span className="nutrition-value">{recipe.nutrition.calories}</span>
+                </div>
+                <div className="nutrition-item">
+                  <span className="nutrition-label">Proteínas</span>
+                  <span className="nutrition-value">{recipe.nutrition.protein}</span>
+                </div>
+                <div className="nutrition-item">
+                  <span className="nutrition-label">Grasas</span>
+                  <span className="nutrition-value">{recipe.nutrition.fat}</span>
+                </div>
+                <div className="nutrition-item">
+                  <span className="nutrition-label">Carbohidratos</span>
+                  <span className="nutrition-value">{recipe.nutrition.carbs}</span>
+                </div>
+              </div>
+            </section>
+          )}
         </div>
       </header>
 
@@ -130,6 +168,17 @@ const RecipeDetail = () => {
           </ol>
         </section>
       </div>
+
+      {recipe.tips && recipe.tips.length > 0 && (
+        <section className="recipe-tips" aria-labelledby="tips-heading">
+          <h3 id="tips-heading">💡 Consejos del Chef</h3>
+          <ul className="tips-list">
+            {recipe.tips.map((tip, index) => (
+              <li key={index}>{tip}</li>
+            ))}
+          </ul>
+        </section>
+      )}
     </article>
   );
 };
