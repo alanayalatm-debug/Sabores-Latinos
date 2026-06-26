@@ -30,10 +30,13 @@ const EbookPromo = () => {
           </ul>
 
           <div className="ebook-cta-container">
-            <button className="ebook-cta-button">
+            <button 
+              className="ebook-cta-button"
+              onClick={() => window.open('https://pay.hotmart.com/V106502379G', '_blank', 'noopener,noreferrer')}
+            >
               Comprar E-Book por $4.99
             </button>
-            <span className="ebook-guarantee">💳 Pago 100% Seguro por Stripe</span>
+            <span className="ebook-guarantee">💳 Pago 100% Seguro por Hotmart</span>
           </div>
         </div>
         
