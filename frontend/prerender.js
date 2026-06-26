@@ -151,7 +151,7 @@ const homeContentHtml = `
           Descarga nuestro <strong>E-Book Oficial en PDF</strong> de alta calidad. Incluye <strong>¡11 recetas exclusivas que no encontrarás aquí!</strong>
         </p>
         <div class="ebook-cta-container">
-          <button class="ebook-cta-button">Comprar E-Book por $9.99</button>
+          <button class="ebook-cta-button">Comprar E-Book por $4.99</button>
           <span class="ebook-guarantee">💳 Pago 100% Seguro por Stripe</span>
         </div>
       </div>

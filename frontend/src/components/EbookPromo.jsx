@@ -31,7 +31,7 @@ const EbookPromo = () => {
 
           <div className="ebook-cta-container">
             <button className="ebook-cta-button">
-              Comprar E-Book por $9.99
+              Comprar E-Book por $4.99
             </button>
             <span className="ebook-guarantee">💳 Pago 100% Seguro por Stripe</span>
           </div>
