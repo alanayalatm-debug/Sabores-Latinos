@@ -148,7 +148,7 @@ const homeContentHtml = `
         <span class="ebook-badge">Oferta de Lanzamiento</span>
         <h2 class="ebook-title">Lleva <span>Sabores Latinos</span> a tu Cocina</h2>
         <p class="ebook-description">
-          Descarga nuestro <strong>E-Book Oficial en PDF</strong> de alta calidad. Incluye las 20 recetas clásicas que amas de nuestra web, <strong>¡y 10 recetas exclusivas que no encontrarás aquí!</strong>
+          Descarga nuestro <strong>E-Book Oficial en PDF</strong> de alta calidad. Incluye <strong>¡11 recetas exclusivas que no encontrarás aquí!</strong>
         </p>
         <div class="ebook-cta-container">
           <button class="ebook-cta-button">Comprar E-Book por $9.99</button>

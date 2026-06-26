@@ -11,7 +11,7 @@ const EbookPromo = () => {
             Lleva <span>Sabores Latinos</span> a tu Cocina
           </h2>
           <p className="ebook-description">
-            Descarga nuestro <strong>E-Book Oficial en PDF</strong> de alta calidad. Incluye las 20 recetas clásicas que amas de nuestra web, <strong>¡y 10 recetas exclusivas que no encontrarás aquí!</strong> (Como la verdadera Feijoada Imperial, el Ceviche Mixto Carretillero y los Tamales Oaxaqueños).
+            Descarga nuestro <strong>E-Book Oficial en PDF</strong> de alta calidad. Incluye <strong>¡11 recetas exclusivas que no encontrarás aquí!</strong> (Como la verdadera Feijoada Imperial, el Ceviche Mixto Carretillero y los Tamales Oaxaqueños).
           </p>
           
           <ul className="ebook-features">
