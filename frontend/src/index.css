@@ -626,6 +626,8 @@ body {
   }
   .pillars-sidebar {
     order: -1;
+    position: relative;
+    top: 0;
   }
 }
 

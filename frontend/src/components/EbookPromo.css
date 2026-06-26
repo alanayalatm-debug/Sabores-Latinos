@@ -160,7 +160,7 @@
   .ebook-promo-container {
     flex-direction: column;
     padding: 2.5rem;
-    gap: 3rem;
+    gap: 2.5rem;
   }
   
   .ebook-title {
@@ -169,5 +169,78 @@
   
   .ebook-image-wrapper {
     order: -1; /* Image on top on mobile */
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  
+  .ebook-cta-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .ebook-promo-section {
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .ebook-promo-container {
+    padding: 1.5rem;
+    gap: 2rem;
+    border-radius: 12px;
+  }
+  
+  .ebook-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .ebook-title {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+  }
+  
+  .ebook-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .ebook-features {
+    margin-bottom: 2rem;
+  }
+  
+  .ebook-features li {
+    font-size: 0.95rem;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+  
+  .ebook-features svg {
+    width: 20px;
+    height: 20px;
+    margin-top: 0.15rem;
+  }
+  
+  .ebook-cta-container {
+    gap: 0.6rem;
+  }
+  
+  .ebook-cta-button {
+    padding: 0.8rem 1.2rem;
+    font-size: 1.05rem;
+    border-radius: 10px;
+    white-space: normal;
+    line-height: 1.3;
+  }
+  
+  .ebook-guarantee {
+    font-size: 0.8rem;
+  }
+  
+  .ebook-image-wrapper {
+    max-width: 260px;
   }
 }
