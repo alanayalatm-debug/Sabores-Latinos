@@ -7,6 +7,8 @@ import RecipeDetail from './pages/RecipeDetail';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Blog from './pages/Blog';
+import BlogPostDetail from './pages/BlogPostDetail';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import './index.css';
@@ -21,6 +23,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/recipe/:id" element={<RecipeDetail />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogPostDetail />} />
               <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
               <Route path="/sobre-nosotros" element={<About />} />
               <Route path="/contacto" element={<Contact />} />

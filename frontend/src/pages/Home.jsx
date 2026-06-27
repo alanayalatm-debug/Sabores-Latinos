@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import RecipeList from '../components/RecipeList';
 import EbookPromo from '../components/EbookPromo';
+import { blogPosts } from '../data/blogPosts';
 
 const pillarsData = [
   {
@@ -43,6 +45,11 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Search & Filter States
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const [selectedDifficulty, setSelectedDifficulty] = useState('');
+
   useEffect(() => {
     import('../data/recipes').then((module) => {
       const basicInfo = module.recipes.map((r) => ({
@@ -62,6 +69,25 @@ const Home = () => {
       setLoading(false);
     });
   }, []);
+
+  // Dynamically extract unique countries for the filter dropdown
+  const countries = [...new Set(recipes.map((r) => r.country))].sort();
+
+  // Filter recipes
+  const filteredRecipes = recipes.filter((recipe) => {
+    const matchesSearch =
+      recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      recipe.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCountry = !selectedCountry || recipe.country === selectedCountry;
+    const matchesDifficulty = !selectedDifficulty || recipe.difficulty === selectedDifficulty;
+    return matchesSearch && matchesCountry && matchesDifficulty;
+  });
+
+  const clearFilters = () => {
+    setSearchTerm('');
+    setSelectedCountry('');
+    setSelectedDifficulty('');
+  };
 
   return (
     <>
@@ -103,6 +129,60 @@ const Home = () => {
 
       <EbookPromo />
 
+      {/* Filter and Search Panel */}
+      <section className="search-filter-panel" aria-label="Buscador y filtros de recetas">
+        <div className="search-box">
+          <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="text"
+            placeholder="Buscar recetas (ej. Tacos, Ceviche...)"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+            aria-label="Buscar recetas por nombre o descripción"
+          />
+        </div>
+
+        <div className="filter-dropdowns">
+          <div className="select-wrapper">
+            <select
+              value={selectedCountry}
+              onChange={(e) => setSelectedCountry(e.target.value)}
+              className="filter-select"
+              aria-label="Filtrar por país"
+            >
+              <option value="">Todos los países</option>
+              {countries.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="select-wrapper">
+            <select
+              value={selectedDifficulty}
+              onChange={(e) => setSelectedDifficulty(e.target.value)}
+              className="filter-select"
+              aria-label="Filtrar por dificultad"
+            >
+              <option value="">Todas las dificultades</option>
+              <option value="Fácil">Fácil</option>
+              <option value="Media">Media</option>
+              <option value="Difícil">Difícil</option>
+            </select>
+          </div>
+
+          {(searchTerm || selectedCountry || selectedDifficulty) && (
+            <button onClick={clearFilters} className="clear-filters-btn">
+              Limpiar filtros
+            </button>
+          )}
+        </div>
+      </section>
+
       {/* Main two-column layout: recipes left, pillars right */}
       <div className="home-main-layout">
         {/* LEFT — Recipe grid */}
@@ -116,7 +196,12 @@ const Home = () => {
               Hubo un problema: {error}
             </div>
           ) : (
-            <RecipeList recipes={recipes} />
+            <>
+              <div className="recipes-count" style={{ marginBottom: '1.2rem', color: 'var(--text-muted)', fontSize: '0.95rem', fontWeight: '500' }}>
+                Mostrando {filteredRecipes.length} de {recipes.length} recetas
+              </div>
+              <RecipeList recipes={filteredRecipes} />
+            </>
           )}
         </main>
 
@@ -162,6 +247,48 @@ const Home = () => {
           </div>
         </aside>
       </div>
+
+      {/* Blog Posts Teaser Section */}
+      <section className="blog-teaser-section">
+        <div className="blog-teaser-header">
+          <h2>Crónicas de la Cocina Latina</h2>
+          <p>Explora nuestras últimas historias sobre ingredientes típicos y tradiciones culinarias.</p>
+        </div>
+
+        <div className="blog-teaser-grid">
+          {blogPosts.slice(0, 3).map((post) => (
+            <article key={post.id} className="blog-teaser-card">
+              <div className="blog-teaser-img-wrap" style={{ position: 'relative', height: '140px', overflow: 'hidden' }}>
+                <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'var(--transition)' }} className="blog-teaser-img" />
+              </div>
+              <div className="blog-teaser-body">
+                <div className="blog-teaser-meta">
+                  <span className="blog-teaser-date">{post.date}</span>
+                  <span className="blog-teaser-dot">•</span>
+                  <span className="blog-teaser-time">{post.readTime}</span>
+                </div>
+                <h3 className="blog-teaser-title">
+                  <Link to={`/blog/${post.id}`}>{post.title}</Link>
+                </h3>
+                <p className="blog-teaser-summary">{post.summary}</p>
+                <Link to={`/blog/${post.id}`} className="blog-teaser-link">
+                  Leer artículo
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginLeft: '4px' }}>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="blog-teaser-footer">
+          <Link to="/blog" className="view-all-blog-btn">
+            Explorar todo el Blog
+          </Link>
+        </div>
+      </section>
     </>
   );
 };

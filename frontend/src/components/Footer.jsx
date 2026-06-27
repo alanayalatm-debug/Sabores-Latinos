@@ -14,6 +14,7 @@ const Footer = () => {
           <h3>Enlaces Rápidos</h3>
           <ul>
             <li><Link to="/">Inicio / Recetas</Link></li>
+            <li><Link to="/blog">Blog Culinario</Link></li>
             <li><Link to="/sobre-nosotros">Sobre Nosotros</Link></li>
             <li><Link to="/contacto">Contacto</Link></li>
           </ul>

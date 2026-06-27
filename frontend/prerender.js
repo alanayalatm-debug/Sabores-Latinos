@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { recipes } from './src/data/recipes.js';
+import { blogPosts } from './src/data/blogPosts.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,6 +29,11 @@ const navbarHtml = `
         </svg>
         <span class="navbar-title">Sabores Latinos</span>
       </a>
+      <div class="navbar-menu">
+        <a href="/" class="navbar-menu-item">Recetas</a>
+        <a href="/blog" class="navbar-menu-item">Blog</a>
+        <a href="/sobre-nosotros" class="navbar-menu-item">Sobre Nosotros</a>
+      </div>
     </div>
   </nav>
 `;
@@ -43,6 +49,7 @@ const footerHtml = `
         <h3>Enlaces Rápidos</h3>
         <ul>
           <li><a href="/">Inicio / Recetas</a></li>
+          <li><a href="/blog">Blog Culinario</a></li>
           <li><a href="/sobre-nosotros">Sobre Nosotros</a></li>
           <li><a href="/contacto">Contacto</a></li>
         </ul>
@@ -489,4 +496,175 @@ recipes.forEach(recipe => {
   console.log(`Pre-rendered: /recipe/${recipe.id}`);
 });
 
+// 6. Blog List Page
+const blogPostsHtml = blogPosts.map(post => `
+  <article class="blog-post-card">
+    <div class="blog-card-img-wrap">
+      <img src="${post.imageUrl}" alt="${post.title}" class="blog-card-img" loading="lazy" />
+      <span class="blog-card-badge">${post.readTime}</span>
+    </div>
+    <div class="blog-card-content">
+      <div class="blog-card-meta">
+        <span class="blog-card-date">${post.date}</span>
+        <span class="blog-card-dot">•</span>
+        <span class="blog-card-author">${post.author}</span>
+      </div>
+      <h2 class="blog-card-title">
+        <a href="/blog/${post.id}">${post.title}</a>
+      </h2>
+      <p class="blog-card-summary">${post.summary}</p>
+      <a href="/blog/${post.id}" class="blog-card-link">
+        Leer artículo
+        <svg class="blog-link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </article>
+`).join('\n');
+
+const blogListContentHtml = `
+  <div class="blog-page-container">
+    <header class="blog-header">
+      <h1 class="blog-page-title">Blog Sabores Latinos</h1>
+      <p class="blog-page-subtitle">
+        Historias, mitos, secretos e ingredientes que definen la cultura gastronómica de América Latina.
+      </p>
+    </header>
+    <div class="blog-posts-grid">
+      ${blogPostsHtml}
+    </div>
+  </div>
+`;
+
+const blogListHtml = renderHtml(
+  wrapContent(blogListContentHtml),
+  "Blog Culinario | Sabores Latinos - Historia e Ingredientes",
+  "Explora la historia, leyendas y secretos de los ingredientes típicos de la comida de América Latina. Artículos interesantes sobre el maíz, ají, cacao y más."
+);
+const blogDir = path.join(DIST_DIR, 'blog');
+fs.mkdirSync(blogDir, { recursive: true });
+fs.writeFileSync(path.join(blogDir, 'index.html'), blogListHtml);
+console.log('Pre-rendered: /blog');
+
+// 7. Blog Details Pages
+blogPosts.forEach(post => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "image": post.imageUrl,
+    "datePublished": "2026-06-27T00:00:00Z",
+    "author": {
+      "@type": "Person",
+      "name": post.author,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sabores Latinos",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://saboreslatinos.net/images/logo.png"
+      }
+    },
+    "description": post.summary
+  };
+
+  const blogHead = `
+  <meta property="og:title" content="${post.title} | Sabores Latinos" />
+  <meta property="og:description" content="${post.summary}" />
+  <meta property="og:type" content="article" />
+  <script type="application/ld+json">
+    ${JSON.stringify(jsonLd)}
+  </script>
+  `;
+
+  const sectionsHtml = post.sections.map(section => {
+    if (section.type === 'heading') {
+      return `<h2 class="blog-content-heading">${section.text}</h2>`;
+    } else if (section.type === 'list') {
+      const itemsHtml = section.items.map(item => {
+        const formattedItem = item.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        return `<li>${formattedItem}</li>`;
+      }).join('\n');
+      return `<ul class="blog-content-list">${itemsHtml}</ul>`;
+    } else {
+      return `<p class="blog-content-paragraph">${section.text}</p>`;
+    }
+  }).join('\n');
+
+  let recipeIds = [];
+  if (post.id === 'el-cacao-regalo-de-los-dioses') {
+    recipeIds = [1, 20];
+  } else if (post.id === 'la-arepa-pan-de-maiz-que-une-fronteras') {
+    recipeIds = [3, 7];
+  } else if (post.id === 'el-aji-y-el-chile-el-fuego-sagrado') {
+    recipeIds = [2, 1];
+  } else if (post.id === 'el-maiz-sosten-de-la-vida') {
+    recipeIds = [19, 3];
+  }
+  const related = recipes.filter(r => recipeIds.includes(r.id));
+  const relatedHtml = related.length > 0 ? `
+    <section class="related-recipes-section">
+      <h3 class="related-recipes-heading">Recetas relacionadas con este artículo</h3>
+      <div class="recipe-grid">
+        ${related.map(recipe => `
+          <a href="/recipe/${recipe.id}" class="recipe-card-link" style="text-decoration: none;">
+            <div class="recipe-card">
+              <div class="recipe-image-wrapper">
+                <img src="${recipe.imageUrl}" alt="${recipe.title}" class="recipe-image" loading="lazy" />
+                <span class="country-badge">${recipe.country}</span>
+              </div>
+              <div class="recipe-content">
+                <h4 class="recipe-title">${recipe.title}</h4>
+                <p class="recipe-description">${recipe.description}</p>
+              </div>
+            </div>
+          </a>
+        `).join('\n')}
+      </div>
+    </section>
+  ` : '';
+
+  const blogDetailContentHtml = `
+    <article class="blog-detail-container">
+      <nav aria-label="breadcrumb">
+        <a href="/blog" class="back-button">&larr; Volver al Blog</a>
+      </nav>
+      <header class="blog-detail-header">
+        <div class="blog-detail-meta">
+          <span class="blog-detail-date">${post.date}</span>
+          <span class="blog-detail-dot">•</span>
+          <span class="blog-detail-author">Por ${post.author}</span>
+          <span class="blog-detail-dot">•</span>
+          <span class="blog-detail-time">${post.readTime} de lectura</span>
+        </div>
+        <h1 class="blog-detail-title">${post.title}</h1>
+        <p class="blog-detail-summary">${post.summary}</p>
+      </header>
+      <div class="blog-detail-hero-wrapper" style="position: relative; height: 380px; border-radius: var(--border-radius); overflow: hidden; margin-bottom: 3rem; box-shadow: 0 10px 25px rgba(0,0,0,0.25); border: 1px solid rgba(255, 255, 255, 0.05);">
+        <img src="${post.imageUrl}" alt="${post.title}" style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+      <div class="blog-detail-content">
+        ${sectionsHtml}
+      </div>
+      ${relatedHtml}
+    </article>
+  `;
+
+  const blogPostHtml = renderHtml(
+    wrapContent(blogDetailContentHtml),
+    `${post.title} | Blog Sabores Latinos`,
+    post.summary,
+    blogHead
+  );
+
+  const postDir = path.join(DIST_DIR, 'blog', post.id);
+  fs.mkdirSync(postDir, { recursive: true });
+  fs.writeFileSync(path.join(postDir, 'index.html'), blogPostHtml);
+  console.log(`Pre-rendered: /blog/${post.id}`);
+});
+
 console.log('All routes pre-rendered successfully!');
+

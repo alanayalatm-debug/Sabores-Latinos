@@ -13,6 +13,11 @@ const Navbar = () => {
           </svg>
           <span className="navbar-title">Sabores Latinos</span>
         </Link>
+        <div className="navbar-menu">
+          <Link to="/" className="navbar-menu-item">Recetas</Link>
+          <Link to="/blog" className="navbar-menu-item">Blog</Link>
+          <Link to="/sobre-nosotros" className="navbar-menu-item">Sobre Nosotros</Link>
+        </div>
       </div>
     </nav>
   );
