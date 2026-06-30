@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.join(__dirname, 'dist');
 const TEMPLATE_PATH = path.join(DIST_DIR, 'index.html');
+const sitemapUrls = [];
 
 if (!fs.existsSync(TEMPLATE_PATH)) {
   console.error('Error: dist/index.html does not exist. Build the project first.');
@@ -79,7 +80,7 @@ function wrapContent(contentHtml) {
   `;
 }
 
-function updateMeta(html, title, description, extraHead = '') {
+function updateMeta(html, title, description, extraHead = '', urlPath = '') {
   let result = html;
   
   // Replace title
@@ -93,17 +94,25 @@ function updateMeta(html, title, description, extraHead = '') {
     result = result.replace('</head>', `  <meta name="description" content="${description}" />\n  </head>`);
   }
 
-  // Insert extra head tags (like JSON-LD, og tags, etc.)
+  // Insert canonical and default extra head tags
+  const canonicalUrl = `https://saboreslatinos.net${urlPath}`;
+  const defaultExtraHead = `
+    <link rel="canonical" href="${canonicalUrl}" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta name="twitter:card" content="summary_large_image" />`;
+
   if (extraHead) {
-    result = result.replace('</head>', `${extraHead}\n  </head>`);
+    result = result.replace('</head>', `${defaultExtraHead}\n${extraHead}\n  </head>`);
+  } else {
+    result = result.replace('</head>', `${defaultExtraHead}\n  </head>`);
   }
 
   return result;
 }
 
-function renderHtml(rootContent, title, description, extraHead = '') {
+function renderHtml(rootContent, title, description, extraHead = '', urlPath = '') {
   let html = template.replace('<div id="root"></div>', `<div id="root">${rootContent}</div>`);
-  return updateMeta(html, title, description, extraHead);
+  return updateMeta(html, title, description, extraHead, urlPath);
 }
 
 // 1. Home Page
@@ -111,7 +120,7 @@ const homeRecipesHtml = recipes.map(recipe => `
   <a href="/recipe/${recipe.id}" class="recipe-card-link" style="text-decoration: none;">
     <div class="recipe-card">
       <div class="recipe-image-wrapper">
-        <img src="${recipe.imageUrl}" alt="${recipe.title}" class="recipe-image" loading="lazy" />
+        <img src="${recipe.imageUrl}" alt="${recipe.title}" class="recipe-image" loading="lazy" width="600" height="400" />
         <span class="country-badge">${recipe.country}</span>
       </div>
       <div class="recipe-content">
@@ -226,8 +235,11 @@ const homeContentHtml = `
 const homeHtml = renderHtml(
   wrapContent(homeContentHtml),
   "Sabores Latinos | Las Mejores Recetas de América Latina",
-  "Descubre la riqueza culinaria de América Latina. Aprende a preparar platos típicos como asado, ceviche, arepas y más con nuestras recetas paso a paso."
+  "Descubre la riqueza culinaria de América Latina. Aprende a preparar platos típicos como asado, ceviche, arepas y más con nuestras recetas paso a paso.",
+  "",
+  "/"
 );
+sitemapUrls.push({ loc: "/", changefreq: "weekly", priority: "1.0" });
 fs.writeFileSync(path.join(DIST_DIR, 'index.html'), homeHtml);
 console.log('Pre-rendered: / (index.html)');
 
@@ -249,8 +261,11 @@ const aboutContentHtml = `
 const aboutHtml = renderHtml(
   wrapContent(aboutContentHtml),
   "Sobre Nosotros | Sabores Latinos",
-  "Conoce más sobre Sabores Latinos, nuestra misión y nuestra pasión por la gastronomía latinoamericana."
+  "Conoce más sobre Sabores Latinos, nuestra misión y nuestra pasión por la gastronomía latinoamericana.",
+  "",
+  "/sobre-nosotros"
 );
+sitemapUrls.push({ loc: "/sobre-nosotros", changefreq: "monthly", priority: "0.8" });
 const aboutDir = path.join(DIST_DIR, 'sobre-nosotros');
 fs.mkdirSync(aboutDir, { recursive: true });
 fs.writeFileSync(path.join(aboutDir, 'index.html'), aboutHtml);
@@ -279,8 +294,11 @@ const contactContentHtml = `
 const contactHtml = renderHtml(
   wrapContent(contactContentHtml),
   "Contacto | Sabores Latinos",
-  "Ponte en contacto con Sabores Latinos. Envíanos tus dudas, sugerencias o recetas."
+  "Ponte en contacto con Sabores Latinos. Envíanos tus dudas, sugerencias o recetas.",
+  "",
+  "/contacto"
 );
+sitemapUrls.push({ loc: "/contacto", changefreq: "monthly", priority: "0.8" });
 const contactDir = path.join(DIST_DIR, 'contacto');
 fs.mkdirSync(contactDir, { recursive: true });
 fs.writeFileSync(path.join(contactDir, 'index.html'), contactHtml);
@@ -315,8 +333,11 @@ const privacyContentHtml = `
 const privacyHtml = renderHtml(
   wrapContent(privacyContentHtml),
   "Política de Privacidad | Sabores Latinos",
-  "Política de privacidad y uso de cookies de Sabores Latinos."
+  "Política de privacidad y uso de cookies de Sabores Latinos.",
+  "",
+  "/politica-de-privacidad"
 );
+sitemapUrls.push({ loc: "/politica-de-privacidad", changefreq: "monthly", priority: "0.5" });
 const privacyDir = path.join(DIST_DIR, 'politica-de-privacidad');
 fs.mkdirSync(privacyDir, { recursive: true });
 fs.writeFileSync(path.join(privacyDir, 'index.html'), privacyHtml);
@@ -427,7 +448,7 @@ recipes.forEach(recipe => {
       
       <header class="recipe-detail-header" style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem;">
         <figure class="recipe-detail-image-wrapper" style="margin: 0; position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);">
-          <img src="${recipe.imageUrl}" alt="Plato terminado de ${recipe.title}" class="recipe-detail-image" style="width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9;" />
+          <img src="${recipe.imageUrl}" alt="Plato terminado de ${recipe.title}" class="recipe-detail-image" style="width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9;" width="800" height="450" />
           <figcaption class="country-badge detail-badge" style="position: absolute; top: 1rem; left: 1rem; background-color: var(--primary); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">${recipe.country}</figcaption>
         </figure>
         
@@ -487,8 +508,10 @@ recipes.forEach(recipe => {
     wrapContent(recipeDetailHtml),
     `${recipe.title} - Receta Auténtica de ${recipe.country} | Sabores Latinos`,
     `Aprende a preparar ${recipe.title}, un plato típico de ${recipe.country}. ${recipe.description}`,
-    recipeHead
+    recipeHead,
+    `/recipe/${recipe.id}`
   );
+  sitemapUrls.push({ loc: `/recipe/${recipe.id}`, changefreq: "weekly", priority: "0.9" });
 
   const recipeDir = path.join(DIST_DIR, 'recipe', String(recipe.id));
   fs.mkdirSync(recipeDir, { recursive: true });
@@ -500,7 +523,7 @@ recipes.forEach(recipe => {
 const blogPostsHtml = blogPosts.map(post => `
   <article class="blog-post-card">
     <div class="blog-card-img-wrap">
-      <img src="${post.imageUrl}" alt="${post.title}" class="blog-card-img" loading="lazy" />
+      <img src="${post.imageUrl}" alt="${post.title}" class="blog-card-img" loading="lazy" width="600" height="400" />
       <span class="blog-card-badge">${post.readTime}</span>
     </div>
     <div class="blog-card-content">
@@ -541,8 +564,11 @@ const blogListContentHtml = `
 const blogListHtml = renderHtml(
   wrapContent(blogListContentHtml),
   "Blog Culinario | Sabores Latinos - Historia e Ingredientes",
-  "Explora la historia, leyendas y secretos de los ingredientes típicos de la comida de América Latina. Artículos interesantes sobre el maíz, ají, cacao y más."
+  "Explora la historia, leyendas y secretos de los ingredientes típicos de la comida de América Latina. Artículos interesantes sobre el maíz, ají, cacao y más.",
+  "",
+  "/blog"
 );
+sitemapUrls.push({ loc: "/blog", changefreq: "weekly", priority: "0.9" });
 const blogDir = path.join(DIST_DIR, 'blog');
 fs.mkdirSync(blogDir, { recursive: true });
 fs.writeFileSync(path.join(blogDir, 'index.html'), blogListHtml);
@@ -657,8 +683,10 @@ blogPosts.forEach(post => {
     wrapContent(blogDetailContentHtml),
     `${post.title} | Blog Sabores Latinos`,
     post.summary,
-    blogHead
+    blogHead,
+    `/blog/${post.id}`
   );
+  sitemapUrls.push({ loc: `/blog/${post.id}`, changefreq: "monthly", priority: "0.8" });
 
   const postDir = path.join(DIST_DIR, 'blog', post.id);
   fs.mkdirSync(postDir, { recursive: true });
@@ -666,5 +694,18 @@ blogPosts.forEach(post => {
   console.log(`Pre-rendered: /blog/${post.id}`);
 });
 
-console.log('All routes pre-rendered successfully!');
+// Generate sitemap.xml
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapUrls.map(url => `  <url>
+    <loc>https://saboreslatinos.net${url.loc}</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>${url.changefreq}</changefreq>
+    <priority>${url.priority}</priority>
+  </url>`).join('\\n')}
+</urlset>`;
 
+fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemapXml);
+console.log('Pre-rendered: /sitemap.xml');
+
+console.log('All routes pre-rendered successfully!');
